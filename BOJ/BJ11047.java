@@ -4,8 +4,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
-// ÃÖ´ë µ¿Àü °³¼ö
-
+// ìµœëŒ€ ë™ì „ ê°œìˆ˜
 public class BJ11047 {
 	
 	static int n;
