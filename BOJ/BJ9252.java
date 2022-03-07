@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-// ÃÖÀå °øÅë ºÎºĞ ¼ö¿­
+// ìµœì¥ ê³µí†µ ë¶€ë¶„ ìˆ˜ì—´
 
 public class BJ9252 {
 	
