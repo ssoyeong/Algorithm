@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//ÆÒÄÉÀÌÅ© µÚÁı±â
+// íŒ¬ì¼€ì´í¬ ë’¤ì§‘ê¸°
 
 public class BJ2759 {
 	
