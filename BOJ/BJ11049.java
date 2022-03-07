@@ -32,7 +32,7 @@ public class BJ11049 {
 		for(int i = 1; i < n; i++) {
 			for(int j = 0; j < n - i; j++) {
 				dp[j][j+i] = Integer.MAX_VALUE;
-				for(int k = j+1; k <= j+i; k++) {	// k ��ġ ���� ��� ������
+				for(int k = j+1; k <= j+i; k++) {
 					dp[j][j+i] = Math.min(dp[j][j+i], 
 							dp[j][k-1] + dp[k][j+i] + arr[j]*arr[k]*arr[j+i+1]);
 				}
