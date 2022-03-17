@@ -61,7 +61,6 @@ public class BJ13023 {
 		for(int i = 0; i < adj[start].size(); i++) {
 			int v = adj[start].get(i);
 			if(!visited[v]) {
-				System.out.println("cnt: " + cnt + ", start: " + start + ", v: " + v);
 				dfs(v, cnt + 1);	// argument에 증감 연산자 사용 시 호출 순서에 의해 값이 달라짐
 			}
 		}
