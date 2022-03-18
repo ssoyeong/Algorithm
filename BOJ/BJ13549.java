@@ -33,13 +33,13 @@ public class BJ13549 {
 			
 			if(pos == k) break;
 			
-			if(pos*2 <= 100000 && !visited[pos*2]) {
+			if(pos*2 <= k+1 && !visited[pos*2]) {
 				queue.addFirst(new int[] {pos*2, sec});		// 가중치가 0인 경우 우선순위
 			}
 			if(pos-1 >= 0 && !visited[pos-1]) {
 				queue.add(new int[] {pos-1, sec+1});
 			}
-			if(pos+1 <= 100000 && pos+1 <= k && !visited[pos+1]) {
+			if(pos+1 <= k+1 && pos+1 <= k && !visited[pos+1]) {
 				queue.add(new int[] {pos+1, sec+1});
 			}	
 			
