@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.StringTokenizer;
 
-// 숨바꼭질 4
+// 숨바꼭질 3
 
 public class BJ13549 {
 	
@@ -34,13 +34,13 @@ public class BJ13549 {
 			if(pos == k) break;
 			
 			if(pos*2 <= k+1 && !visited[pos*2]) {
-				queue.addFirst(new int[] {pos*2, sec});		// 가중치가 0인 경우 우선순위
+				queue.addFirst(new int[] {pos*2, sec});		// 가중치가 0인 경우 우선순위. front 삽입
 			}
-			if(pos-1 >= 0 && !visited[pos-1]) {
-				queue.add(new int[] {pos-1, sec+1});
+			if(pos-1 >= 0 && !visited[pos-1]) {	
+				queue.add(new int[] {pos-1, sec+1});		// back 삽입
 			}
 			if(pos+1 <= k+1 && pos+1 <= k && !visited[pos+1]) {
-				queue.add(new int[] {pos+1, sec+1});
+				queue.add(new int[] {pos+1, sec+1});		// back 삽입
 			}	
 			
 		}
