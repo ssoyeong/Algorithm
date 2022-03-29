@@ -2,7 +2,6 @@ package baekjoon;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 // 부분수열의 합
@@ -28,36 +27,25 @@ public class BJ1182_2 {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		Arrays.sort(arr);
+		backTracking(0, 0);
 		
-//		for(int i : arr) System.out.print(i + " ");
-//		System.out.println();
-		
-		backTracking(0, 0, 0);
-		
-		
-		System.out.println(cnt);
+		if(s == 0) {
+			System.out.println(cnt - 1);		// 공집합인 경우 제외
+		}
+		else {
+			System.out.println(cnt);
+		}
+
 	}
 	
-	private static void backTracking(int depth, int idx, int total) {
-		
-		if(total == s && depth != 0) {
-			cnt++;
-//			System.out.println("만족할 때 depth: " + depth);
+	private static void backTracking(int depth, int total) {
+
+		if(depth == n) {
+			if(total == s) cnt++;
 			return;
 		}
 
-		for(int i = idx; i < arr.length; i++) {
-			if(depth == 0) total = 0;
-			total += arr[i];
-//			System.out.println("depth: " + depth + ", i: " + i + ", total: " + total);
-			backTracking(depth+1, i+1, total);
-			total -= arr[i];
-		}
-		
-		
+		backTracking(depth + 1, total);					// 선택하지 않는 경우
+		backTracking(depth + 1, total + arr[depth]);	// 선택하는 경우
 	}
-	
-
-
 }
