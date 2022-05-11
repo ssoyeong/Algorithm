@@ -44,7 +44,7 @@ public class BJ17086 {
 			for(int j = 0; j < m; j++) {
 				if(st.nextToken().equals("1")) {
 					map[i][j] = true;
-					queue.add(new Shark(j, i));
+					queue.add(new Shark(i, j));
 				}
 			}
 		}
@@ -63,10 +63,10 @@ public class BJ17086 {
 			for(int i = 0; i < x.length; i++) {
 				int xx = px + x[i];
 				int yy = py + y[i];
-				if(xx < 0 || yy < 0 || xx >= m || yy >= n) continue;
-				if(map[yy][xx] || dist[yy][xx] != 0) continue;
-				dist[yy][xx] = dist[py][px] + 1;
-				answer = Math.max(answer, dist[yy][xx]);
+				if(xx < 0 || yy < 0 || xx >= n || yy >= m) continue;
+				if(map[xx][yy] || dist[xx][yy] != 0) continue;
+				dist[xx][yy] = dist[px][py] + 1;
+				answer = Math.max(answer, dist[xx][yy]);
 				queue.add(new Shark(xx, yy));
 			}
 			
