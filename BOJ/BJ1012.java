@@ -58,8 +58,6 @@ public class BJ1012 {
 					
 					if(field[i][j] && !visited[i][j]) {
 						bfs(i, j);
-//						System.out.println("i, j: " + i + " " + j);
-//						System.out.println("cnt: " + cnt);
 					}
 				}
 			}
