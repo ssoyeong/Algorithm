@@ -63,7 +63,7 @@ public class BJ4963 {
 			for(int i = 1; i <= w; i++) {
 				for(int j = 1; j <= h; j++) {
 					if(!visited[j][i]) {
-						if(map[j][i]) bfs(i, j);
+						if(map[j][i]) dfs(i, j);
 						else visited[j][i] = true;
 					}
 				}
@@ -75,7 +75,7 @@ public class BJ4963 {
 		System.out.println(sb.toString());
 	}
 	
-	private static void bfs(int x, int y) {
+	private static void dfs(int x, int y) {
 		
 		stack.add(new Point(x, y));
 		visited[y][x] = true;
