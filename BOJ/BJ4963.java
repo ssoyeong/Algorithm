@@ -80,8 +80,8 @@ public class BJ4963 {
 		stack.add(new Point(x, y));
 		visited[y][x] = true;
 		
-		boolean flag = false;
-		int isOne = 1;
+		boolean flag = false;		// 섬이 여러 칸으로 이루어진 경우 판단
+		int isOne = 1;				// 섬이 한 칸으로 이루어진 경우 판단
 		
 		while(!stack.isEmpty()) {
 			
