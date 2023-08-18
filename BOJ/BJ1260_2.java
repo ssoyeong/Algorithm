@@ -1,21 +1,15 @@
-package baekjoon;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.io.*;
+import java.util.*;
 
-// DFS with recursion and BFS
+
+// DFS와 BFS
 
 public class BJ1260_2 {
 	
-	static int n;
-	static int m;
-	static int v;
-	static boolean[][] adj;
+	static int n, m, v;
 	static boolean[] visited;
-	static Queue<Integer> queue = new LinkedList<>();
+	static ArrayList<Integer>[] adj;
+	static StringBuilder sb = new StringBuilder();
 	
 	public static void main(String[] args) throws IOException {
 		
@@ -24,52 +18,63 @@ public class BJ1260_2 {
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
 		v = Integer.parseInt(st.nextToken());
-		
-		adj = new boolean[n+1][n+1];
-		visited = new boolean[n+1];
+		visited = new boolean[n + 1];
+		adj = new ArrayList[n + 1];
+		for(int i = 1; i <= n; i++) {
+			adj[i] = new ArrayList<>();
+		}
 		
 		for(int i = 0; i < m; i++) {
 			st = new StringTokenizer(br.readLine());
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
-			adj[a][b] = true;
-			adj[b][a] = true;
+			adj[a].add(b);
+			adj[b].add(a);
 		}
 		
-		dfs(v);
-		visited = new boolean[n+1];
-		System.out.println();
-		bfs();
-	}
-	
-	private static void dfs(int x) {
-		
-		visited[x] = true;
-		System.out.print(x + " ");
-		
-		for(int i = 1; i <= adj.length -1; i++) {
-			if(adj[x][i] && !visited[i]) {
-				dfs(i);
-			}
+		for(int i = 1; i <= n; i++) {
+			Collections.sort(adj[i]);
 		}
-	}
-	
-	private static void bfs() {
-		queue.add(v);
+		
 		visited[v] = true;
-		System.out.print(v + " ");
-		while(!queue.isEmpty()) {
-			int front = queue.poll();
-			for(int i = 1; i <= adj.length - 1; i++) {
-				if(adj[front][i] && !visited[i]) {
-					queue.add(i);
-					visited[i] = true;
-					System.out.print(i + " ");
-				}
-			}
-		}
+		sb.append(v + " ");
+		dfs(v);
 		
-		System.out.println();
+		sb.append("\n");
+		Arrays.fill(visited, false);
+		
+		bfs(v);
+		System.out.println(sb.toString());
 	}
 	
+	private static void dfs(int target) {
+		
+		for(int x : adj[target]) {
+			if(visited[x]) continue;
+			visited[x] = true;
+			sb.append(x + " ");
+			dfs(x);
+		}
+	}
+	
+	private static void bfs(int target) {
+		
+		ArrayDeque<Integer> queue = new ArrayDeque<>();
+		
+		visited[target] = true;
+		sb.append(target + " ");
+		queue.add(target);
+		
+		while(!queue.isEmpty()) {
+			target = queue.poll();
+
+			for(int x : adj[target]) {
+				if(visited[x]) continue;
+				visited[x] = true;
+				sb.append(x + " ");
+				queue.add(x);
+			}
+		}
+	}
+
 }
